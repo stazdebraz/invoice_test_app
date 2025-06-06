@@ -19,7 +19,7 @@ class ListItemProfile extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       height: mq.height * 0.12,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(3), color: Colors.white),
+          borderRadius: BorderRadius.circular(7), color: Colors.white),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
