@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:invoice_app/core/extensions/double_extansions.dart';
 
 class NewInvoiceAppBar extends StatelessWidget {
-  const NewInvoiceAppBar({super.key});
+  const NewInvoiceAppBar({super.key, required this.title});
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +33,8 @@ class NewInvoiceAppBar extends StatelessWidget {
                     fontFamily: 'Poppins'))
           ],
         ),
-        const Text('New invoice',
-            style: TextStyle(
+        Text(title,
+            style: const TextStyle(
                 fontSize: 30,
                 color: Colors.black,
                 fontWeight: FontWeight.w600,
