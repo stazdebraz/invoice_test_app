@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:invoice_app/modules/newInvoice/new_invoice_screen.dart';
+import 'package:invoice_app/modules/edit_invoice/edit_invoice_screen.dart';
 
 void main() {
   runApp(const InvoiceApp());
@@ -11,7 +11,7 @@ class InvoiceApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: NewInvoiceScreen(),
+      home: EditInvoiceScreen(),
     );
   }
 }
