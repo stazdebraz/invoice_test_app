@@ -1,9 +1,12 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:invoice_app/core/config/router/app_router.gr.dart';
 import 'package:invoice_app/core/extensions/double_extansions.dart';
 
-class NewInvoiceAppBar extends StatelessWidget {
-  const NewInvoiceAppBar({super.key, required this.title});
+class InvoiceAppBar extends StatelessWidget {
+  const InvoiceAppBar({super.key, required this.title, required this.pop});
   final String title;
+  final Function() pop;
 
   @override
   Widget build(BuildContext context) {
@@ -12,22 +15,30 @@ class NewInvoiceAppBar extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text('Cancel',
-                style: TextStyle(
-                    fontSize: 17,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: 'Poppins')),
+            InkWell(
+              onTap: pop,
+              child: const Text('Cancel',
+                  style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w400,
+                      fontFamily: 'Poppins')),
+            ),
             50.horizontalSpace,
-            const Text('Preview',
-                style: TextStyle(
-                    fontSize: 17,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: 'Poppins')),
+            InkWell(
+              onTap: () {
+                context.router.popAndPush(const SendInvoiceRoute());
+              },
+              child: const Text('Preview',
+                  style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w400,
+                      fontFamily: 'Poppins')),
+            ),
             const Text('Done',
                 style: TextStyle(
-                    fontSize: 17,
+                    fontSize: 14,
                     color: Colors.black,
                     fontWeight: FontWeight.w600,
                     fontFamily: 'Poppins'))
@@ -35,7 +46,7 @@ class NewInvoiceAppBar extends StatelessWidget {
         ),
         Text(title,
             style: const TextStyle(
-                fontSize: 30,
+                fontSize: 26,
                 color: Colors.black,
                 fontWeight: FontWeight.w600,
                 fontFamily: 'Poppins')),

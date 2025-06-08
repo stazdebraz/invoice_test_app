@@ -20,6 +20,7 @@ class BorderButton extends StatelessWidget {
             child: Text(
               'Create Estimates',
               style: TextStyle(
+                  fontSize: 12,
                   color: AppColors.mainOrange,
                   fontWeight: FontWeight.w400,
                   fontFamily: 'Montserrat'),

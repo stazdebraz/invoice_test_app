@@ -32,8 +32,9 @@ class _EditInvoiceScreenState extends State<EditInvoiceScreen> {
               child: Column(
                 children: [
                   AppBar(
-                    title: const NewInvoiceAppBar(
+                    title: InvoiceAppBar(
                       title: 'Edit invoice',
+                      pop: () {},
                     ),
                   ),
                   30.verticalSpace,

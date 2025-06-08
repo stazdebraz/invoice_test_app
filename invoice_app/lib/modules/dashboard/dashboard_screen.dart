@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:invoice_app/core/config/router/app_router.gr.dart';
 import 'package:invoice_app/core/extensions/double_extansions.dart';
 import 'package:invoice_app/core/theme/app_assets.dart';
 import 'package:invoice_app/core/theme/app_colors.dart';
@@ -55,7 +56,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ),
                     10.horizontalSpace,
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        context.router.popAndPush(const SettingsRoute());
+                      },
                       child: Image.asset(
                         AppAssets.setting,
                         scale: 4,
@@ -69,8 +72,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
               ),
               SliverGrid.builder(
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 450,
-                  childAspectRatio: 4,
+                  maxCrossAxisExtent: 420,
+                  childAspectRatio: 5,
                   mainAxisSpacing: 5,
                 ),
                 itemBuilder: (context, index) {
@@ -90,7 +93,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       30.verticalSpace,
                       AppButton(
                         text: 'Create Invoice',
-                        onPressed: () {},
+                        onPressed: () {
+                          context.router.push(const CreateInvoiceRoute());
+                        },
                         isMainOrange: true,
                       ),
                       10.verticalSpace,

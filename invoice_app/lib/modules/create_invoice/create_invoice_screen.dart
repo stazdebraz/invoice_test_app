@@ -20,25 +20,24 @@ class CreateInvoiceScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
-            20.verticalSpace,
-            AppBar(
-                backgroundColor: AppColors.backgroundColor,
-                title: const NewInvoiceAppBar(
-                  title: 'New invoic',
-                )),
+            30.verticalSpace,
+            InvoiceAppBar(
+              title: 'New invoice',
+              pop: () {},
+            ),
             30.verticalSpace,
             const ChoiseButton(),
             20.verticalSpace,
             CreateInvoiceButton(
-                nameText: 'Business account ',
+                upText: 'Business account ',
                 onPressed: () {},
                 text: 'Choose Account'),
             20.verticalSpace,
             CreateInvoiceButton(
-                nameText: 'Client', onPressed: () {}, text: 'Add Client'),
+                upText: 'Client', onPressed: () {}, text: 'Add Client'),
             20.verticalSpace,
             CreateInvoiceButton(
-                nameText: 'Items', onPressed: () {}, text: 'Add Item'),
+                upText: 'Items', onPressed: () {}, text: 'Add Item'),
             20.verticalSpace,
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,6 +45,7 @@ class CreateInvoiceScreen extends StatelessWidget {
                 const Text(
                   'Summary',
                   style: TextStyle(
+                      fontSize: 12,
                       color: AppColors.greyText,
                       fontWeight: FontWeight.w400,
                       fontFamily: 'Poppins'),
@@ -74,6 +74,7 @@ class CreateInvoiceScreen extends StatelessWidget {
                             const Text(
                               '0,00\$',
                               style: TextStyle(
+                                  fontSize: 12,
                                   color: Colors.black,
                                   fontWeight: FontWeight.w600,
                                   fontFamily: 'Poppins'),

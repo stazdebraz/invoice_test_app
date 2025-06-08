@@ -21,6 +21,16 @@ class _ChoiseButtonState extends State<ChoiseButton> {
       initialDate: selectedDate ?? DateTime.now(),
       firstDate: DateTime(2000),
       lastDate: DateTime(2100),
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+              colorScheme: const ColorScheme.light(
+                  primary: AppColors.mainOrange,
+                  onPrimary: Colors.black,
+                  onSurface: Colors.black)),
+          child: child!,
+        );
+      },
     );
 
     if (picked != null) {
@@ -91,6 +101,7 @@ class _ChoiseButtonState extends State<ChoiseButton> {
                       child: Text(
                     formattedDate,
                     style: const TextStyle(
+                      fontSize: 12,
                       color: Colors.black,
                       fontWeight: FontWeight.w400,
                       fontFamily: 'Poppins',
@@ -106,6 +117,7 @@ class _ChoiseButtonState extends State<ChoiseButton> {
                 decoration: const InputDecoration(
                   hintText: '-',
                   hintStyle: TextStyle(
+                    fontSize: 12,
                     color: Colors.black,
                     fontWeight: FontWeight.w400,
                     fontFamily: 'Poppins',
@@ -135,6 +147,7 @@ class _ChoiseButtonState extends State<ChoiseButton> {
                 decoration: const InputDecoration(
                   hintText: '001',
                   hintStyle: TextStyle(
+                    fontSize: 12,
                     color: Colors.black,
                     fontWeight: FontWeight.w400,
                     fontFamily: 'Poppins',

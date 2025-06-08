@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:invoice_app/core/extensions/double_extansions.dart';
 import 'package:invoice_app/core/theme/app_assets.dart';
-import 'package:invoice_app/core/theme/app_colors.dart';
 
-class ListItemProfile extends StatelessWidget {
-  const ListItemProfile(
-      {super.key,
-      required this.name,
-      required this.info,
-      required this.lastSeen});
+class ItemList extends StatelessWidget {
+  const ItemList({super.key, required this.name, required this.email});
   final String name;
-  final String info;
-  final String lastSeen;
-
+  final String email;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,7 +15,7 @@ class ListItemProfile extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(children: [
+          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             CircleAvatar(
               radius: 28,
               backgroundColor: Colors.red,
@@ -46,23 +39,19 @@ class ListItemProfile extends StatelessWidget {
                       fontFamily: 'Poppins'),
                 ),
                 Text(
-                  info,
+                  email,
                   style: const TextStyle(
                       fontSize: 12,
                       color: Colors.black,
                       fontWeight: FontWeight.w400,
                       fontFamily: 'Poppins'),
-                )
+                ),
               ],
             ),
           ]),
-          Text(
-            lastSeen,
-            style: const TextStyle(
-                fontSize: 12,
-                color: AppColors.greyText,
-                fontWeight: FontWeight.w400,
-                fontFamily: 'Poppins'),
+          Image.asset(
+            AppAssets.more,
+            scale: 4,
           )
         ],
       ),

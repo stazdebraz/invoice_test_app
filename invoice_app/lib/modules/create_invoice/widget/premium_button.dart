@@ -39,6 +39,7 @@ class PremiumButton extends StatelessWidget {
                     const Text(
                       'Add Photo',
                       style: TextStyle(
+                          fontSize: 12,
                           color: Colors.black,
                           fontWeight: FontWeight.w600,
                           fontFamily: 'Poppins'),

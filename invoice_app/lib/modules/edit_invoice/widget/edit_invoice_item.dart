@@ -40,6 +40,7 @@ class EditInvoiceItem extends StatelessWidget {
                     Text(
                       name,
                       style: const TextStyle(
+                          fontSize: 12,
                           color: Colors.black,
                           fontWeight: FontWeight.w600,
                           fontFamily: 'Poppins'),
@@ -48,6 +49,7 @@ class EditInvoiceItem extends StatelessWidget {
                     Text(
                       price,
                       style: const TextStyle(
+                          fontSize: 12,
                           color: Colors.black,
                           fontWeight: FontWeight.w600,
                           fontFamily: 'Poppins'),

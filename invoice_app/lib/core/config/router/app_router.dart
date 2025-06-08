@@ -10,5 +10,8 @@ class AppRouter extends RootStackRouter {
         AutoRoute(page: EditInvoiceRoute.page),
         AutoRoute(page: LoadingRoute.page, initial: true),
         AutoRoute(page: WelcomeRoute.page),
+        AutoRoute(page: SettingsRoute.page),
+        AutoRoute(page: BusinessRoute.page),
+        AutoRoute(page: SendInvoiceRoute.page),
       ];
 }
