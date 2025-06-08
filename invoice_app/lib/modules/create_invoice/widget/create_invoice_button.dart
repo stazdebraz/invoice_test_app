@@ -3,8 +3,8 @@ import 'package:invoice_app/core/extensions/double_extansions.dart';
 import 'package:invoice_app/core/theme/app_assets.dart';
 import 'package:invoice_app/core/theme/app_colors.dart';
 
-class NewInvoiceButton extends StatelessWidget {
-  const NewInvoiceButton(
+class CreateInvoiceButton extends StatelessWidget {
+  const CreateInvoiceButton(
       {super.key,
       required this.text,
       required this.onPressed,

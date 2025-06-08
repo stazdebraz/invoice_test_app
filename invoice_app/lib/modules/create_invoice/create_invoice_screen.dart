@@ -1,14 +1,16 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:invoice_app/core/extensions/double_extansions.dart';
 import 'package:invoice_app/core/theme/app_colors.dart';
 import 'package:invoice_app/ui/choise_button.dart';
 import 'package:invoice_app/ui/invoice_app_bar.dart';
-import 'package:invoice_app/modules/new_invoice/widget/new_invoice_button.dart';
-import 'package:invoice_app/modules/new_invoice/widget/premium_button.dart';
+import 'package:invoice_app/modules/create_invoice/widget/create_invoice_button.dart';
+import 'package:invoice_app/modules/create_invoice/widget/premium_button.dart';
 import 'package:invoice_app/ui/app_button.dart';
 
-class NewInvoiceScreen extends StatelessWidget {
-  const NewInvoiceScreen({super.key});
+@RoutePage()
+class CreateInvoiceScreen extends StatelessWidget {
+  const CreateInvoiceScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,15 +29,15 @@ class NewInvoiceScreen extends StatelessWidget {
             30.verticalSpace,
             const ChoiseButton(),
             20.verticalSpace,
-            NewInvoiceButton(
+            CreateInvoiceButton(
                 nameText: 'Business account ',
                 onPressed: () {},
                 text: 'Choose Account'),
             20.verticalSpace,
-            NewInvoiceButton(
+            CreateInvoiceButton(
                 nameText: 'Client', onPressed: () {}, text: 'Add Client'),
             20.verticalSpace,
-            NewInvoiceButton(
+            CreateInvoiceButton(
                 nameText: 'Items', onPressed: () {}, text: 'Add Item'),
             20.verticalSpace,
             Column(

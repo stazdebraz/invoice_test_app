@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:invoice_app/core/extensions/double_extansions.dart';
 import 'package:invoice_app/core/theme/app_assets.dart';
@@ -7,6 +8,7 @@ import 'package:invoice_app/modules/dashboard/widget/filter.dart';
 import 'package:invoice_app/ui/app_button.dart';
 import 'package:invoice_app/ui/list_item_profile.dart';
 
+@RoutePage()
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
 
@@ -39,13 +41,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       children: [
                         Text('Total Income',
                             style: TextStyle(
-                                fontSize: 15,
+                                fontSize: 14,
                                 color: AppColors.greyText,
                                 fontWeight: FontWeight.w400,
                                 fontFamily: 'Poppins')),
                         Text('\$ 27,000.00',
                             style: TextStyle(
-                                fontSize: 50,
+                                fontSize: 40,
                                 color: Colors.black,
                                 fontWeight: FontWeight.w600,
                                 fontFamily: 'Montserrat')),

@@ -27,6 +27,7 @@ class AppButton extends StatelessWidget {
             child: Text(
               text,
               style: const TextStyle(
+                  fontSize: 12,
                   color: Colors.white,
                   fontWeight: FontWeight.w400,
                   fontFamily: 'Montserrat'),
