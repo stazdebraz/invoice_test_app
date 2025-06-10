@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:invoice_app/core/extensions/double_extansions.dart';
 import 'package:invoice_app/core/theme/app_colors.dart';
 import 'package:intl/intl.dart';
+import 'package:invoice_app/ui/widget/Calendar.dart';
 
 class ChoiseButton extends StatefulWidget {
   const ChoiseButton({super.key});
 
   @override
-  _ChoiseButtonState createState() => _ChoiseButtonState();
+  State<ChoiseButton> createState() => _ChoiseButtonState();
 }
 
 class _ChoiseButtonState extends State<ChoiseButton> {
@@ -15,29 +16,21 @@ class _ChoiseButtonState extends State<ChoiseButton> {
   final TextEditingController numberController = TextEditingController();
   DateTime? selectedDate;
 
-  Future<void> _pickDate() async {
-    final DateTime? picked = await showDatePicker(
+  Future<void> _pickDate(BuildContext context) async {
+    await showModalBottomSheet(
+      scrollControlDisabledMaxHeightRatio: 1,
+      backgroundColor: Colors.white.withOpacity(0),
       context: context,
-      initialDate: selectedDate ?? DateTime.now(),
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2100),
-      builder: (BuildContext context, Widget? child) {
-        return Theme(
-          data: Theme.of(context).copyWith(
-              colorScheme: const ColorScheme.light(
-                  primary: AppColors.mainOrange,
-                  onPrimary: Colors.black,
-                  onSurface: Colors.black)),
-          child: child!,
-        );
+      builder: (context) {
+        return const Calendar();
       },
-    );
-
-    if (picked != null) {
-      setState(() {
-        selectedDate = picked;
-      });
-    }
+    ).then((picked) {
+      if (picked != null && picked is DateTime) {
+        setState(() {
+          selectedDate = picked;
+        });
+      }
+    });
   }
 
   String get formattedDate {
@@ -96,7 +89,9 @@ class _ChoiseButtonState extends State<ChoiseButton> {
                   color: Colors.white,
                 ),
                 child: InkWell(
-                  onTap: _pickDate,
+                  onTap: () {
+                    _pickDate(context);
+                  },
                   child: Center(
                       child: Text(
                     formattedDate,

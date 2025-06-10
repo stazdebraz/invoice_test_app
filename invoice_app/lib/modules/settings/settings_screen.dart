@@ -26,7 +26,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
             width: 80,
             height: 80,
             child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pop(context);
+                },
                 icon: const Icon(
                   Icons.arrow_back_ios,
                   color: Colors.black,

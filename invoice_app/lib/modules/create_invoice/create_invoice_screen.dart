@@ -21,9 +21,8 @@ class CreateInvoiceScreen extends StatelessWidget {
         child: Column(
           children: [
             30.verticalSpace,
-            InvoiceAppBar(
+            const InvoiceAppBar(
               title: 'New invoice',
-              pop: () {},
             ),
             30.verticalSpace,
             const ChoiseButton(),

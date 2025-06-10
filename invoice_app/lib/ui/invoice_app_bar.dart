@@ -4,9 +4,11 @@ import 'package:invoice_app/core/config/router/app_router.gr.dart';
 import 'package:invoice_app/core/extensions/double_extansions.dart';
 
 class InvoiceAppBar extends StatelessWidget {
-  const InvoiceAppBar({super.key, required this.title, required this.pop});
+  const InvoiceAppBar({
+    super.key,
+    required this.title,
+  });
   final String title;
-  final Function() pop;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,9 @@ class InvoiceAppBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             InkWell(
-              onTap: pop,
+              onTap: () {
+                Navigator.pop(context);
+              },
               child: const Text('Cancel',
                   style: TextStyle(
                       fontSize: 14,

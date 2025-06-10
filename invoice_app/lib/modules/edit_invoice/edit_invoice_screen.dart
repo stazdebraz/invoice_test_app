@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:invoice_app/core/extensions/double_extansions.dart';
+import 'package:invoice_app/core/theme/app_colors.dart';
 import 'package:invoice_app/modules/edit_invoice/widget/edit_invoice_item.dart';
 import 'package:invoice_app/modules/edit_invoice/widget/edit_invoice_items.dart';
 import 'package:invoice_app/modules/edit_invoice/widget/edit_invoice_main_item.dart';
@@ -22,82 +23,81 @@ class _EditInvoiceScreenState extends State<EditInvoiceScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: AppColors.backgroundColor,
         body: NotificationListener(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: CustomScrollView(
-          controller: ScrollController(),
-          slivers: [
-            SliverToBoxAdapter(
-              child: Column(
-                children: [
-                  AppBar(
-                    title: InvoiceAppBar(
-                      title: 'Edit invoice',
-                      pop: () {},
-                    ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: CustomScrollView(
+              controller: ScrollController(),
+              slivers: [
+                SliverToBoxAdapter(
+                  child: Column(
+                    children: [
+                      50.verticalSpace,
+                      const InvoiceAppBar(
+                        title: 'Edit invoice',
+                      ),
+                      30.verticalSpace,
+                      const ChoiseButton(),
+                      30.verticalSpace,
+                      const EditInvoiceItem(
+                        price: '',
+                        upName: 'Client',
+                        name: 'Yulia',
+                      ),
+                    ],
                   ),
-                  30.verticalSpace,
-                  const ChoiseButton(),
-                  30.verticalSpace,
-                  const EditInvoiceItem(
-                    price: '',
-                    upName: 'Client',
-                    name: 'Yulia',
+                ),
+                const SliverToBoxAdapter(child: EditInvoiceMainItem()),
+                SliverToBoxAdapter(
+                  child: Column(
+                    children: [
+                      30.verticalSpace,
+                      const EditInvoiceItem(
+                        price: '2000,00\$',
+                        upName: 'Summary',
+                        name: 'Subtotal',
+                      ),
+                      const EditInvoiceItems(
+                        price: '0,00',
+                        name: 'Discount',
+                      ),
+                      const EditInvoiceItems(
+                        price: '0,00',
+                        name: 'Tax',
+                      ),
+                      const EditInvoiceItems(
+                        price: '2000,00\$',
+                        name: 'Total',
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+                SliverToBoxAdapter(
+                  child: Column(
+                    children: [
+                      30.verticalSpace,
+                      const PremiumButton(),
+                      const EditInvoiceTextField(),
+                      30.verticalSpace,
+                      AppButton(
+                        text: 'Delete Invoice',
+                        onPressed: () {},
+                        isMainOrange: false,
+                      ),
+                      10.verticalSpace,
+                      AppButton(
+                        text: 'Save',
+                        onPressed: () {},
+                        isMainOrange: true,
+                      ),
+                      80.verticalSpace
+                    ],
+                  ),
+                )
+              ],
             ),
-            const SliverToBoxAdapter(child: EditInvoiceMainItem()),
-            SliverToBoxAdapter(
-              child: Column(
-                children: [
-                  30.verticalSpace,
-                  const EditInvoiceItem(
-                    price: '2000,00\$',
-                    upName: 'Summary',
-                    name: 'Subtotal',
-                  ),
-                  const EditInvoiceItems(
-                    price: '0,00',
-                    name: 'Discount',
-                  ),
-                  const EditInvoiceItems(
-                    price: '0,00',
-                    name: 'Tax',
-                  ),
-                  const EditInvoiceItems(
-                    price: '2000,00\$',
-                    name: 'Total',
-                  ),
-                ],
-              ),
-            ),
-            SliverToBoxAdapter(
-              child: Column(
-                children: [
-                  30.verticalSpace,
-                  const PremiumButton(),
-                  const EditInvoiceTextField(),
-                  30.verticalSpace,
-                  AppButton(
-                    text: 'Delete Invoice',
-                    onPressed: () {},
-                    isMainOrange: false,
-                  ),
-                  10.verticalSpace,
-                  AppButton(
-                    text: 'Save',
-                    onPressed: () {},
-                    isMainOrange: true,
-                  ),
-                  80.verticalSpace
-                ],
-              ),
-            )
-          ],
-        ),
-      ),
-    ));
+          ),
+        ));
   }
 }

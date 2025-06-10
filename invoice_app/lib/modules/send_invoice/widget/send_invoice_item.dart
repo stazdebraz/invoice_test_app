@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:invoice_app/core/theme/app_colors.dart';
 
-class SendInvoiceItem extends StatelessWidget {
-  const SendInvoiceItem({super.key});
+class SendInvoiceItem extends StatefulWidget {
+  const SendInvoiceItem({
+    super.key,
+    required this.onTap,
+    required this.color,
+  });
+  final Function() onTap;
+  final Color color;
 
+  @override
+  State<SendInvoiceItem> createState() => _SendInvoiceItemState();
+}
+
+class _SendInvoiceItemState extends State<SendInvoiceItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,20 +32,23 @@ class SendInvoiceItem extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Poppins'),
             ),
-            Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: AppColors.mainOrange),
-              child: const Center(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 5),
-                  child: Text(
-                    'Mark as Paid',
-                    style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'Poppins'),
+            InkWell(
+              onTap: widget.onTap,
+              child: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: widget.color),
+                child: const Center(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+                    child: Text(
+                      'Mark as Paid',
+                      style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: 'Poppins'),
+                    ),
                   ),
                 ),
               ),

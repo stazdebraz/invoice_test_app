@@ -16,7 +16,7 @@ class SettingsButton extends StatelessWidget {
         width: double.infinity,
         height: 50,
         child: Align(
-          alignment: Alignment(-1, 0),
+          alignment: const Alignment(-1, 0),
           child: Text(
             text,
             style: const TextStyle(

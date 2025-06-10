@@ -3,14 +3,48 @@ import 'package:flutter/material.dart';
 import 'package:invoice_app/core/extensions/double_extansions.dart';
 import 'package:invoice_app/core/theme/app_assets.dart';
 import 'package:invoice_app/core/theme/app_colors.dart';
+import 'package:invoice_app/modules/send_invoice/widget/send_invoice_bottom_bar.dart';
 import 'package:invoice_app/modules/send_invoice/widget/send_invoice_client.dart';
+import 'package:invoice_app/modules/send_invoice/widget/send_invoice_delete.dart';
 import 'package:invoice_app/modules/send_invoice/widget/send_invoice_item.dart';
 import 'package:invoice_app/modules/send_invoice/widget/send_invoice_main_item.dart';
-import 'package:invoice_app/ui/app_button.dart';
+import 'package:invoice_app/modules/send_invoice/widget/send_invoice_snack_bar.dart';
 
 @RoutePage()
-class SendInvoiceScreen extends StatelessWidget {
+class SendInvoiceScreen extends StatefulWidget {
   const SendInvoiceScreen({super.key});
+
+  @override
+  State<SendInvoiceScreen> createState() => _SendInvoiceScreenState();
+}
+
+class _SendInvoiceScreenState extends State<SendInvoiceScreen> {
+  bool _isOnTap = false;
+
+  void markAsPaid(BuildContext context) async {
+    setState(() {
+      _isOnTap = true;
+    });
+    await showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return const SendInvoiceSnackBar();
+        });
+    setState(() {
+      _isOnTap = false;
+    });
+  }
+
+  void delete(BuildContext context) {
+    showModalBottomSheet(
+        backgroundColor: Colors.white.withOpacity(0),
+        barrierColor: Colors.black.withOpacity(0.2),
+        scrollControlDisabledMaxHeightRatio: 0.2,
+        context: context,
+        builder: (BuildContext context) {
+          return const SendInvoiceDelete();
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +61,9 @@ class SendInvoiceScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
                         icon: const Icon(
                           Icons.arrow_back_ios,
                           color: Colors.black,
@@ -45,7 +81,9 @@ class SendInvoiceScreen extends StatelessWidget {
                         ),
                         30.horizontalSpace,
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            delete(context);
+                          },
                           child: Image.asset(
                             AppAssets.more,
                             scale: 4,
@@ -58,85 +96,19 @@ class SendInvoiceScreen extends StatelessWidget {
                 60.verticalSpace,
                 const SendInvoiceMainItem(),
                 20.verticalSpace,
-                const SendInvoiceItem(),
+                SendInvoiceItem(
+                  onTap: () {
+                    markAsPaid(context);
+                    setState(() {});
+                  },
+                  color: _isOnTap ? Colors.green : AppColors.mainOrange,
+                ),
                 20.verticalSpace,
                 const SendInvoiceClient(),
               ],
             ),
           ),
-          Container(
-            decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.vertical(top: Radius.circular(5))),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        children: [
-                          Image.asset(
-                            AppAssets.share,
-                            scale: 4,
-                          ),
-                          const Text(
-                            'share',
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w400,
-                                fontFamily: 'Poppins'),
-                          )
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Image.asset(
-                            AppAssets.print,
-                            scale: 4,
-                          ),
-                          const Text(
-                            'print',
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w400,
-                                fontFamily: 'Poppins'),
-                          )
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Image.asset(
-                            AppAssets.edit,
-                            scale: 4,
-                          ),
-                          const Text(
-                            'edit',
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w400,
-                                fontFamily: 'Poppins'),
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: AppButton(
-                      text: 'Send Invoice',
-                      onPressed: () {},
-                      isMainOrange: true),
-                ),
-                40.verticalSpace,
-              ],
-            ),
-          )
+          const SendInvoiceBottomBar()
         ],
       ),
     );
