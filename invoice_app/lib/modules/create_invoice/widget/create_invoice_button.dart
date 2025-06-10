@@ -8,9 +8,9 @@ class CreateInvoiceButton extends StatelessWidget {
       {super.key,
       required this.text,
       required this.onPressed,
-      required this.nameText});
+      required this.upText});
   final String text;
-  final String nameText;
+  final String upText;
   final Function() onPressed;
 
   @override
@@ -19,8 +19,9 @@ class CreateInvoiceButton extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          nameText,
+          upText,
           style: const TextStyle(
+              fontSize: 12,
               color: AppColors.greyText,
               fontWeight: FontWeight.w400,
               fontFamily: 'Poppins'),
@@ -46,6 +47,7 @@ class CreateInvoiceButton extends StatelessWidget {
                     Text(
                       text,
                       style: const TextStyle(
+                          fontSize: 12,
                           color: Colors.black,
                           fontWeight: FontWeight.w600,
                           fontFamily: 'Poppins'),

@@ -23,7 +23,7 @@ class _FilterState extends State<Filter> {
             },
             style: ElevatedButton.styleFrom(
                 side: BorderSide(
-                  width: 2,
+                  width: 1,
                   color: isTypebutton == 0
                       ? AppColors.mainOrange
                       : AppColors.greyButton,
@@ -33,12 +33,13 @@ class _FilterState extends State<Filter> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(7))),
             child: SizedBox(
-              height: 50,
+              height: 40,
               width: 50,
               child: Center(
                 child: Text(
                   'All',
                   style: TextStyle(
+                      fontSize: 16,
                       color: isTypebutton == 0
                           ? Colors.white
                           : AppColors.greyButton,
@@ -54,7 +55,7 @@ class _FilterState extends State<Filter> {
             },
             style: ElevatedButton.styleFrom(
                 side: BorderSide(
-                  width: 2,
+                  width: 1,
                   color: isTypebutton == 1
                       ? AppColors.mainOrange
                       : AppColors.greyButton,
@@ -64,12 +65,13 @@ class _FilterState extends State<Filter> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(7))),
             child: SizedBox(
-              height: 50,
-              width: 90,
+              height: 40,
+              width: 100,
               child: Center(
                 child: Text(
                   'Outstanding',
                   style: TextStyle(
+                      fontSize: 16,
                       color: isTypebutton == 1
                           ? Colors.white
                           : AppColors.greyButton,
@@ -85,7 +87,7 @@ class _FilterState extends State<Filter> {
             },
             style: ElevatedButton.styleFrom(
                 side: BorderSide(
-                  width: 2,
+                  width: 1,
                   color: isTypebutton == 2
                       ? AppColors.mainOrange
                       : AppColors.greyButton,
@@ -95,12 +97,13 @@ class _FilterState extends State<Filter> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(7))),
             child: SizedBox(
-              height: 50,
+              height: 40,
               width: 50,
               child: Center(
                 child: Text(
                   'Paid',
                   style: TextStyle(
+                      fontSize: 16,
                       color: isTypebutton == 2
                           ? Colors.white
                           : AppColors.greyButton,
